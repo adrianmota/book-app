@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-4 offset-8">
+            <a href="/createEditorial" class="btn btn-primary w-75 float-end">Crear Editorial</a>
+        </div>
+    </div>
+    <div class="row mt-4">
+        {{#if hasEditorials}}
+            {{#each editorials as |editorial|}}
+                <div class="col-4 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="text-center">{{editorial.name}}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-body">Tel: {{editorial.phone}}</p>
+                            <p class="text-body">País: <span class="text-muted">{{editorial.country}}</span></p>
+                            <p class="text-body">Cantidad de libros: <span class="fw-bold">15</span></p>
+                            <div class="btn-group float-end">
+                                <a href="/editEditorial/{{editorial.id}}?edit=true" class="btn btn-secondary">Editar</a>
+                                <a href="/deleteEditorial/{{editorial.id}}" class="btn btn-danger">Borrar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <h3 class="text-center">No hay editoriales agregadas en la app.</h3>
+        {{/if}}
+    </div>
+</div>

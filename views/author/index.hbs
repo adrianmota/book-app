@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-4 offset-8">
+            <a href="/createAuthor" class="btn btn-primary float-end w-75">Crear Autor</a>
+        </div>
+    </div>
+    <div class="row mt-4">
+        {{#if hasAuthors}}
+            {{#each authors as |author|}}
+                <div class="col-4 mb-4">
+                    <div class="card">
+                        <div class="card-header bg-light text-dark">
+                            <h5 class="text-center">{{author.name}}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-body">{{author.email}}</p>
+                            <p>Cantidad de libros: <span class="fw-bold">15</span></p>
+                            <div class="btn-group float-end">
+                                <a href="/editAuthor/{{author.id}}?edit=true" class="btn btn-secondary">Editar</a>
+                                <a href="/deleteAuthor/{{author.id}}" class="btn btn-danger">Borrar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <h4 class="text-center">No hay autores creados en la app.</h4>
+        {{/if}}
+    </div>
+</div>

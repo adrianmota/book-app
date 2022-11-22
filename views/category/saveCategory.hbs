@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-6 offset-3">
+            <div class="card">
+                <div class="card-header bg-dark text-light">
+                    <h3 class="text-center">{{title}}</h3>
+                </div>
+                <div class="card-body">
+                    <form action="{{#if editMode}}/editCategory{{else}}/createCategory{{/if}}" method="post">
+                        <div class="mb-2">
+                            <label for="name" class="form-label">Nombre</label>
+                            <input id="name" name="name" value="{{category.name}}" class="form-control" />
+                            {{#if hasNoName}}
+                                <span class="text-danger">* Debes rellenar el campo nombre</span>
+                            {{/if}}
+                        </div>
+                        <div class="mb-2">
+                            <label for="description" class="form-label">Descripción</label>
+                            <input id="description" name="description" value="{{category.description}}" class="form-control" />
+                            {{#if hasNoDescription}}
+                                <span class="text-danger">* Debes rellenar el campo descripción</span>
+                            {{/if}}
+                        </div>
+                        {{#if editMode}}
+                            <input type="hidden" name="id" value="{{category.id}}" />
+                        {{/if}}
+                        <div class="mt-4">
+                            <a href="/categories" class="btn btn-secondary float-end m-1">Cancelar</a>
+                            <button type="submit" class="btn btn-primary float-end m-1">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -18,16 +18,16 @@
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/books">Libros</a>
+                            <a class="nav-link {{#if bookIsActive}}active{{/if}}" href="/books">Libros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/categories">Categorías</a>
+                            <a class="nav-link {{#if categoryIsActive}}active{{/if}}" href="/categories">Categorías</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/authors">Autores</a>
+                            <a class="nav-link {{#if authorIsActive}}active{{/if}}" href="/authors">Autores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/editorials">Editoriales</a>
+                            <a class="nav-link {{#if editorialIsActive}}active{{/if}}" href="/editorials">Editoriales</a>
                         </li>
                     </ul>
                 </div>

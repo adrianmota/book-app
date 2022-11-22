@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="row mt-1">
+        <div class="col-6 offset-3 mt-4">
+            <div class="card">
+                <div class="card-header bg-dark text-light">
+                    <h4 class="text-center">{{title}}</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{{#if editMode}}/editAuthor{{else}}/createAuthor{{/if}}" method="post">
+                        <div class="mb-2">
+                            <label for="name" class="form-label">Nombre</label>
+                            <input id="name" class="form-control" name="name" value="{{author.name}}" />
+                            {{#if hasNoName}}
+                                <span class="text-danger">* Debes rellenar el campo nombre</span>
+                            {{/if}}
+                        </div>
+                        <div class="mb-2">
+                            <label for="email" class="form-label">Correo</label>
+                            <input id="email" class="form-control" name="email" value="{{author.email}}" />
+                            {{#if hasNoEmail}}
+                                <span class="text-danger">* Debes rellenar el campo correo</span>
+                            {{/if}}
+                        </div>
+                        {{#if editMode}}
+                            <input type="hidden" name="id" value="{{author.id}}" />
+                        {{/if}}
+                        <div class="mt-4">
+                            <a href="/authors" class="btn btn-secondary float-end m-1">Cancelar</a>
+                            <button type="submit" class="btn btn-primary float-end m-1">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,6 +5,9 @@ const sequelize = require('./context/appContext');
 const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
 const homeRouter = require('./routes/home');
+const authorRouter = require('./routes/author');
+const categoryRouter = require('./routes/category');
+const editorialRouter = require('./routes/editorial');
 const errorController = require('./controllers/errorController');
 const Book = require('./models/book');
 const Category = require('./models/category');
@@ -36,6 +39,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(homeRouter);
+app.use(authorRouter);
+app.use(categoryRouter);
+app.use(editorialRouter);
 app.use('/', errorController.get404);
 
 // Relationships config

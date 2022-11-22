@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-6 offset-3">
+            <div class="card">
+                <div class="card-header bg-dark text-light">
+                    <h4 class="text-center">{{title}}</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{{#if editMode}}/editEditorial{{else}}/createEditorial{{/if}}" method="post">
+                        <div class="mb-2">
+                            <label for="name" class="form-label">Nombre</label>
+                            <input type="text" id="name" name="name" value="{{editorial.name}}" class="form-control"/>
+                            {{#if hasNoName}}
+                                <span class="text-danger">* Debes rellenar el campo nombre</span>
+                            {{/if}}
+                        </div>
+                        <div class="mb-2">
+                            <label for="phone" class="form-label">Teléfono</label>
+                            <input type="text" id="phone" name="phone" value="{{editorial.phone}}" class="form-control"/>
+                            {{#if hasNoPhone}}
+                                <span class="text-danger">* Debes rellenar el campo teléfono</span>
+                            {{/if}}
+                        </div>
+                        <div class="mb-2">
+                            <label for="country" class="form-label">País</label>
+                            <input type="text" id="country" name="country" value="{{editorial.country}}" class="form-control"/>
+                            {{#if hasNoCountry}}
+                                <span class="text-danger">* Debes rellenar el campo país</span>
+                            {{/if}}
+                        </div>
+                        {{#if editMode}}
+                            <input type="hidden" name="id" value="{{editorial.id}}" />
+                        {{/if}}
+                        <div class="mt-4">
+                            <a href="/editorials" class="btn btn-secondary float-end m-1">Cancelar</a>
+                            <button type="submit" class="btn btn-primary float-end m-1">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-6 offset-3">
+            <div class="card mt-2">
+                <div class="card-header bg-danger text-light">
+                    <h3>¿Estás de acuerdo en borrar la categoría {{category.name}}?</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/deleteCategory" method="post">
+                        <input type="hidden" name="id" value="{{category.id}}" />
+                        <a href="/categories" class="btn btn-secondary m-1 float-end">Cancelar</a>
+                        <button type="submit" class="btn btn-danger m-1 float-end">Aceptar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

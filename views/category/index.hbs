@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-4 offset-8">
+            <a href="/createCategory" class="btn btn-primary w-75 float-end">Crear Categoría</a>
+        </div>
+    </div>
+    <div class="row mt-4">
+        {{#if hasCategories}}
+            {{#each categories as |category|}}
+                <div class="col-4 mb-4">
+                    <div class="card">
+                        <div class="card-header text-dark bg-light">
+                            <h5>{{category.name}}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-body">{{category.description}}</p>
+                            <p>Cantidad de libros: <span class="fw-bold">15</span></p>
+                            <div class="btn-group float-end">
+                                <a href="/editCategory/{{category.id}}?edit=true" class="btn btn-secondary">Editar</a>    
+                                <a href="/deleteCategory/{{category.id}}" class="btn btn-danger">Borrar</a>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <h3 class="text-center">No hay categorías creadas en la app.</h3>
+        {{/if}}
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-6 offset-3">
+            <div class="card mt-2">
+                <div class="card-header bg-danger text-light">
+                    <h4>¿Estás de acuerdo en borrar la editorial {{editorial.name}}?</h4>
+                </div>
+                <div class="card-body">
+                    <form action="/deleteEditorial" method="post">
+                        <input type="hidden" name="id" value="{{editorial.id}}" />
+                        <a href="/editorials" class="btn btn-secondary float-end m-1">Cancelar</a>
+                        <button type="submit" class="btn btn-danger float-end m-1">Aceptar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
