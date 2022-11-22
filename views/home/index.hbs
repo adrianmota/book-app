@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    {{!-- Form to search books by their names --}}
+    <div class="row mt-2">
+        <div class="col-4 offset-8">
+            <form action="/searchByName" method="post">
+                <div class="d-flex">
+                    <input type="text" id="bookName" name="bookName" class="form-control m-1" />
+                    <button type="submit" class="btn btn-primary m-1">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header bg-dark text-light">
+                    <h4 class="text-center">Filtrar</h4>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title fs-6">Categorías</h5>
+                    <form action="/filter" method="post">
+                        <div class="mb-2">
+                            <input 
+                                type="checkbox" 
+                                class="form-check d-inline center-vertically m-1" 
+                                id="all" 
+                                name="all"
+                                value="" />
+                            <label 
+                                for="all" 
+                                class="form-label m-1">Todas
+                            </label>
+                        </div>
+
+                        {{!-- Iterate all the categories --}}
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{!-- Book card --}}
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header"></div>
+                <div class="card-body"></div>
+            </div>
+        </div>
+    </div>
+</div>
