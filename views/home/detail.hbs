@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-8 offset-2">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4 class="text-center">{{book.title}}</h4>
+                </div>
+                <img src="http://127.0.0.1:5000/{{book.imagePath}}" alt="{{book.title}} Book Image"  class="fixed-image-size rounded" />
+                <div class="card-body">
+                    <p class="text-body"><span class="fw-bold">Año de publicación:</span> {{book.year}}</p>
+                    <p class="text-body"><span class="fw-bold">Categoría:</span> {{book.category.dataValues.name}}</p>
+                    <p class="text-body"><span class="fw-bold">Autor:</span> {{book.author.dataValues.name}}</p>
+                    <p class="text-body"><span class="fw-bold">Editorial:</span> {{book.editorial.dataValues.name}}</p>
+                    <p class="text-body"><span class="fw-bold">País del editorial:</span> {{book.editorial.dataValues.country}}</p>
+                    <p class="text-body"><span class="fw-bold">Teléfono del editorial:</span> {{book.editorial.dataValues.phone}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

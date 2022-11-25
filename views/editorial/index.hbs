@@ -15,7 +15,7 @@
                         <div class="card-body">
                             <p class="text-body">Tel: {{editorial.phone}}</p>
                             <p class="text-body">País: <span class="text-muted">{{editorial.country}}</span></p>
-                            <p class="text-body">Cantidad de libros: <span class="fw-bold">15</span></p>
+                            <p class="text-body">Cantidad de libros: <span class="fw-bold">{{editorial.books.length}}</span></p>
                             <div class="btn-group float-end">
                                 <a href="/editEditorial/{{editorial.id}}?edit=true" class="btn btn-secondary">Editar</a>
                                 <a href="/deleteEditorial/{{editorial.id}}" class="btn btn-danger">Borrar</a>

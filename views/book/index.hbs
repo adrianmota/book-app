@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-4 offset-8">
+            <a href="/createBook" class="btn btn-primary w-75 float-end">Crear Libro</a>
+        </div>
+    </div>
+    <div class="row mt-4">
+        {{#if hasBooks}}
+            {{#each books as |book|}}
+                <div class="col-4 mb-4">
+                    <div class="card">
+                        <img 
+                            src="{{book.imagePath}}"
+                            class="fixed-image-size rounded" 
+                        />
+                        <div class="card-body">
+                            <h4 class="card-title fs-5">{{book.title}}</h4>
+                            <p class="text-body">Año: {{book.year}}</p>
+                            <p class="text-body">Categoría: {{book.category.dataValues.name}}</p>
+                            <p class="text-body">Autor: {{book.author.dataValues.name}}</p>
+                            <p class="text-body">Editorial: {{book.editorial.dataValues.name}}</p>
+                            <div class="btn-group float-end">
+                                <a href="/editBook/{{book.id}}?edit=true" class="btn btn-secondary">Editar</a>
+                                <a href="/deleteBook/{{book.id}}" class="btn btn-danger">Borrar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <h3 class="text-center">No hay libros agregados en esta app.</h3>
+        {{/if}}
+    </div>
+</div>

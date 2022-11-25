@@ -14,7 +14,7 @@
                         </div>
                         <div class="card-body">
                             <p class="text-body">{{author.email}}</p>
-                            <p>Cantidad de libros: <span class="fw-bold">15</span></p>
+                            <p>Cantidad de libros: <span class="fw-bold">{{author.books.length}}</span></p>
                             <div class="btn-group float-end">
                                 <a href="/editAuthor/{{author.id}}?edit=true" class="btn btn-secondary">Editar</a>
                                 <a href="/deleteAuthor/{{author.id}}" class="btn btn-danger">Borrar</a>

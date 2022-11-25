@@ -1,0 +1,107 @@
+<div class="container-fluid">
+    <div class="row mt-4">
+        {{#if canShowForm}}
+            <div class="col-6 offset-3">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4 class="text-center">{{title}}</h4>
+                    </div>
+                    <div class="card-body">
+                        {{#if editMode}}
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-8 offset-2">
+                                        <img src="http://127.0.0.1:5000/{{book.imagePath}}" alt="{{book.title}} Book Image" class="fixed-image-size rounded" />
+                                    </div>
+                                </div>
+                            </div>
+                        {{/if}}
+                        <form action="{{#if editMode}}/editBook{{else}}/createBook{{/if}}" method="post" enctype="multipart/form-data">
+                            <div class="mb-2">
+                                <label for="title" class="form-label">Título</label>
+                                <input type="text" id="title" name="title" value="{{book.title}}" class="form-control" />
+                                {{#if hasNoTitle}}
+                                    <span class="text-danger">* Debes rellenar el campo título</span>
+                                {{/if}}
+                            </div>
+                            <div class="mb-2">
+                                <label for= "year" class="form-label">Año de publicación</label>
+                                <input type="text" id="year" name="year" value="{{book.year}}" class="form-control" />
+                                {{#if hasNoYear}}
+                                    <span class="text-danger">* Debes rellenar el campo año de publicación</span>
+                                {{/if}}
+                            </div>
+                            <div class="mb-2">
+                                <label for="imageFile" class="form-label">Imagen</label>
+                                <input type="file" id="imageFile" name="imageFile" class="form-control" {{#if editMode}}{{else}}required{{/if}}/>
+                                {{#if hasNoImage}}
+                                    <span class="text-danger">* Debes subir la imagen de la portada del libro</span>
+                                {{/if}}
+                            </div>
+                            <div class="mb-2">
+                                <label for="category" class="form-label">Categoría</label>
+                                <select id="category" name="categoryId" class="form-select">
+                                    <option value="">Seleccione una categoría</option>
+                                    {{#each categories as |category|}}
+                                        <option value="{{category.id}}"
+                                            {{#if (idsAreEqual ../book.categoryId category.id)}}
+                                                selected
+                                            {{/if}}
+                                        >{{category.name}}
+                                        </option>
+                                    {{/each}}
+                                </select>
+                                {{#if hasNoCategory}}
+                                    <span class="text-danger">* Debes seleccionar una categoría</span>
+                                {{/if}}
+                            </div>
+                            <div class="mb-2">
+                                <label for="author" class="form-label">Autor</label>
+                                <select id="author" name="authorId" class="form-select">
+                                    <option value="">Seleccione un autor</option>
+                                    {{#each authors as |author|}}
+                                        <option value="{{author.id}}"
+                                            {{#if (idsAreEqual ../book.authorId author.id)}}
+                                                selected
+                                            {{/if}}
+                                        >{{author.name}}
+                                        </option>
+                                    {{/each}}
+                                </select>
+                                {{#if hasNoAuthor}}
+                                    <span class="text-danger">* Debes seleccionar un autor</span>
+                                {{/if}}
+                            </div>
+                            <div class="mb-2">
+                                <label for="editorial" class="form-label">Editorial</label>
+                                <select id="editorial" name="editorialId" class="form-select">
+                                    <option value="">Seleccione una editorial</option>
+                                    {{#each editorials as |editorial|}}
+                                        <option value="{{editorial.id}}"
+                                            {{#if (idsAreEqual ../book.editorialId editorial.id)}}
+                                                selected
+                                            {{/if}}
+                                        >{{editorial.name}}
+                                        </option>
+                                    {{/each}}
+                                </select>
+                                {{#if hasNoEditorial}}
+                                    <span class="text-danger">* Debes seleccionar una editorial</span>
+                                {{/if}}
+                            </div>
+                            {{#if editMode}}
+                                <input type="hidden" name="id" value="{{book.id}}" />
+                            {{/if}}
+                            <div class="mt-4">
+                                <a href="/books" class="btn btn-secondary m-1 float-end">Cancelar</a>
+                                <button type="submit" class="btn btn-primary m-1 float-end">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {{else}}
+            <h3 class="text-center">No se pueden crear libros porque no hay categorias o autores o editoriales almacenados</h3>
+        {{/if}}
+    </div>
+</div>

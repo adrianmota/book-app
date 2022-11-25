@@ -1,7 +1,8 @@
 const Editorial = require('../models/editorial');
+const Book = require('../models/book');
 
 exports.getIndex = (req, res, next) => {
-    Editorial.findAll()
+    Editorial.findAll({ include: [{ model: Book }] })
         .then(result => {
             const editorials = result.map(result => result.dataValues);
             res.render('editorial/index', {

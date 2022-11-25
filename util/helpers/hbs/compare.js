@@ -1,0 +1,1 @@
+exports.idsAreEqual = (idFromBook, idFromOrigin) => idFromBook == idFromOrigin;

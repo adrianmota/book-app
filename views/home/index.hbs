@@ -1,10 +1,9 @@
 <div class="container-fluid">
-    {{!-- Form to search books by their names --}}
-    <div class="row mt-2">
+    <div class="row mt-4">
         <div class="col-4 offset-8">
             <form action="/searchByName" method="post">
                 <div class="d-flex">
-                    <input type="text" id="bookName" name="bookName" class="form-control m-1" />
+                    <input type="text" placeholder="Buscar por título" id="bookTitle" name="bookTitle" value="{{bookTitle}}" class="form-control m-1" />
                     <button type="submit" class="btn btn-primary m-1">Buscar</button>
                 </div>
             </form>
@@ -19,30 +18,62 @@
                 <div class="card-body">
                     <h5 class="card-title fs-6">Categorías</h5>
                     <form action="/filter" method="post">
-                        <div class="mb-2">
-                            <input 
-                                type="checkbox" 
-                                class="form-check d-inline center-vertically m-1" 
-                                id="all" 
-                                name="all"
-                                value="" />
-                            <label 
-                                for="all" 
-                                class="form-label m-1">Todas
-                            </label>
+                        <div class="limit-vertical-size">
+                            <div>
+                                <input 
+                                    type="checkbox" 
+                                    class="form-check d-inline center-vertically m-1" 
+                                    id="all" 
+                                    name="all"
+                                    value="all"
+                                />
+                                <label 
+                                    for="all" 
+                                    class="form-label m-1">Todas
+                                </label>
+                            </div>
+                            {{#each categories as |category|}}
+                                <div>
+                                    <input 
+                                        type="checkbox" 
+                                        class="form-check d-inline center-vertically m-1" 
+                                        id="{{category.id}}" 
+                                        name="categoriesIds"
+                                        value="{{category.id}}" 
+                                    />
+                                    <label 
+                                        for="{{category.id}}" 
+                                        class="form-label m-1">{{category.name}}
+                                    </label>
+                                </div>
+                            {{/each}}
                         </div>
-
-                        {{!-- Iterate all the categories --}}
+                        <button type="submit" class="btn btn-primary mt-2 w-100">Filtrar</button>
                     </form>
                 </div>
             </div>
         </div>
         {{!-- Book card --}}
-        <div class="col-4">
-            <div class="card">
-                <div class="card-header"></div>
-                <div class="card-body"></div>
-            </div>
-        </div>
+        {{#if hasBooks}}
+            {{#each books as |book|}}
+                <div class="col-4 mb-4">
+                    <a href="/detail/{{book.id}}" class="text-decoration-none text-reset">
+                        <div class="card">
+                            <img src="{{book.imagePath}}" alt="{{book.title}} Book Image" class="fixed-image-size rounded" />
+                            <div class="card-body">
+                                <h4 class="card-title fs-5">{{book.title}}</h4>
+                                <p class="text-body">Año: {{book.year}}</p>
+                                <p class="text-body">Categoría: {{book.category.dataValues.name}}</p>
+                                <p class="text-body">Autor: {{book.author.dataValues.name}}</p>
+                                <p class="text-body">Editorial: {{book.editorial.dataValues.name}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {{/each}}
+        {{else}}
+            <h3 class="text-center">No hay libros agregados en la app.</h3>
+        {{/if}}
+        
     </div>
 </div>

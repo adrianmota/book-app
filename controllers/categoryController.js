@@ -1,7 +1,8 @@
 const Category = require('../models/category');
+const Book = require('../models/book');
 
 exports.getIndex = (req, res, next) => {
-    Category.findAll()
+    Category.findAll({ include: [{ model: Book }] })
         .then(result => {
             const categories = result.map(result => result.dataValues);
             res.render('category/index', {

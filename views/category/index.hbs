@@ -14,7 +14,7 @@
                         </div>
                         <div class="card-body">
                             <p class="text-body">{{category.description}}</p>
-                            <p>Cantidad de libros: <span class="fw-bold">15</span></p>
+                            <p>Cantidad de libros: <span class="fw-bold">{{category.books.length}}</span></p>
                             <div class="btn-group float-end">
                                 <a href="/editCategory/{{category.id}}?edit=true" class="btn btn-secondary">Editar</a>    
                                 <a href="/deleteCategory/{{category.id}}" class="btn btn-danger">Borrar</a>    
